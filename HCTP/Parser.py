@@ -15,23 +15,31 @@ class YSTAT:
     def aggregate_stats(self):
         self.YFILE.seek(self.YSKILL)
         YSLIST = []
+        YSSLIST = []
 
         def YSBS(YDATA):
             return self.YPOINT(YDATA, 'little') >> 1
 
-        for _ in range(self.YSKILLSIZE):
+        def parse_stats():
             YSTR = YSBS(self.YFILE.read(1))
             YSUB = YSBS(self.YFILE.read(2))
             YENDURE = YSBS(self.YFILE.read(3))
             YTECH = YSBS(self.YFILE.read(4))
             YSPD = YSBS(self.YFILE.read(5))
-
-            YSLIST.append({
+            return {
                 'Strength': YSTR,
                 'Submission': YSUB,
                 'Endurance': YENDURE,
                 'Technique': YTECH,
                 'Speed': YSPD,
-            })
+            }
 
-        return YSLIST
+        for _ in range(self.YSKILLSIZE):
+            YSLIST.append(parse_stats())
+
+        self.YFILE.seek(self.YSSKILL)
+
+        for _ in range(self.YSKILLSIZE):
+            YSSLIST.append(parse_stats())
+
+        return YSLIST, YSSLIST
