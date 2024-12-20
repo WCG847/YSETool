@@ -10,14 +10,14 @@ class YSTAT:
     def __init__(self, file_path=None):
         self.file_path = file_path
         self.YFILE = open(self.file_path, 'rb')
+        self.YPOINT = int.from_bytes
 
     def aggregate_stats(self):
         self.YFILE.seek(self.YSKILL)
-        YPOINT = int.from_bytes
         YSLIST = []
 
         def YSBS(YDATA):
-            return YPOINT(YDATA, 'little') >> 1
+            return self.YPOINT(YDATA, 'little') >> 1
 
         for _ in range(self.YSKILLSIZE):
             YSTR = YSBS(self.YFILE.read(1))
