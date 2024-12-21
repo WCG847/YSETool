@@ -22,10 +22,10 @@ class YSTAT:
 
         def parse_stats():
             YSTR = YSBS(self.YFILE.read(1))
-            YSUB = YSBS(self.YFILE.read(2))
-            YENDURE = YSBS(self.YFILE.read(3))
-            YTECH = YSBS(self.YFILE.read(4))
-            YSPD = YSBS(self.YFILE.read(5))
+            YSUB = YSBS(self.YFILE.read(1))
+            YENDURE = YSBS(self.YFILE.read(1))
+            YTECH = YSBS(self.YFILE.read(1))
+            YSPD = YSBS(self.YFILE.read(1))
             return {
                 'Strength': YSTR,
                 'Submission': YSUB,
@@ -43,3 +43,5 @@ class YSTAT:
             YSSLIST.append(parse_stats())
 
         return YSLIST, YSSLIST
+
+

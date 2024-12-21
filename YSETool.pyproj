@@ -27,6 +27,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\Calc.py" />
+    <Compile Include="Base\MLUT.py" />
     <Compile Include="Base\__init__.py" />
     <Compile Include="HCTP\Parser.py" />
     <Compile Include="HCTP\__init__.py" />
